@@ -1,15 +1,15 @@
 package com.crud.tasks.com.crud.tasks.domain;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity(name = "tasks")
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,4 +20,5 @@ public class Task {
 
     @Column(name = "description")
     private String content;
+
 }
