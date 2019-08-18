@@ -1,4 +1,4 @@
-package com.crud.tasks.com.crud.tasks.controller;
+package com.crud.tasks.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
