@@ -34,7 +34,7 @@ public class TrelloClientTest {
 
     @Before
     public void init() {
-        when(trelloConfig.getTrelloApiEndpoint()).thenReturn("http://test.com");
+        when(trelloConfig.getTrelloApiEndpoint()).thenReturn("http://test.com/");
         when(trelloConfig.getTrelloAppKey()).thenReturn("test");
         when(trelloConfig.getTrelloToken()).thenReturn("test");
     }
@@ -63,7 +63,7 @@ public class TrelloClientTest {
     public void shouldCreateCard() throws URISyntaxException {
         //Given
         TrelloCardDto trelloCardDto = new TrelloCardDto(
-                "Test Task",
+                "Test task",
                 "Test Description",
                 "top",
                 "test_id"
@@ -80,7 +80,7 @@ public class TrelloClientTest {
 
         //Then
         Assert.assertEquals("1",newCard.getId());
-        Assert.assertEquals("Test Task", newCard.getName());
+        Assert.assertEquals("Test task", newCard.getName());
         Assert.assertEquals("http://test.com", newCard.getShortUrl());
     }
 
