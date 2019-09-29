@@ -18,7 +18,7 @@ public class TrelloController {
     private TrelloFacade trelloFacade;
 
     @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards")
-    public List<TrelloBoardDto> getTrelloBoards() {
+    public List<TrelloBoardDto> getTrelloBoards()  {
         return trelloFacade.fetchTrelloBoards();
     }
 
