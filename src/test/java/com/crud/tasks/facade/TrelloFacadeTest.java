@@ -99,4 +99,21 @@ public class TrelloFacadeTest {
             });
         });
     }
+
+    @Test
+    public void shouldCreateCard(){
+        //Given
+        TrelloCard trelloCard = new TrelloCard("name", "description", "position", "list");
+        TrelloCardDto trelloCardDto = new TrelloCardDto("name","description", "position", "list");
+        CreatedTrelloCardDto createdTrelloCardDto = new CreatedTrelloCardDto("1", "name", "url");
+
+        when(trelloMapper.mapToTrelloCard(trelloCardDto)).thenReturn(trelloCard);
+        when(trelloService.createTrelloCard(trelloMapper.mapToTrelloCardDto(trelloCard))).thenReturn(createdTrelloCardDto);
+
+        //When
+        CreatedTrelloCardDto createdCard = trelloFacade.createCard(trelloCardDto);
+
+        //Then
+        Assert.assertEquals(createdCard.getName(), "name");
+    }
 }
