@@ -1,9 +1,6 @@
 package com.crud.tasks.facade;
 
-import com.crud.tasks.domain.TrelloBoard;
-import com.crud.tasks.domain.TrelloBoardDto;
-import com.crud.tasks.domain.TrelloList;
-import com.crud.tasks.domain.TrelloListDto;
+import com.crud.tasks.domain.*;
 import com.crud.tasks.mapper.TrelloMapper;
 import com.crud.tasks.service.TrelloService;
 import com.crud.tasks.trello.facade.TrelloFacade;
@@ -101,5 +98,22 @@ public class TrelloFacadeTest {
                 Assert.assertFalse(trelloListDto.isClosed());
             });
         });
+    }
+
+    @Test
+    public void shouldCreateCard(){
+        //Given
+        TrelloCard trelloCard = new TrelloCard("name", "description", "position", "list");
+        TrelloCardDto trelloCardDto = new TrelloCardDto("name","description", "position", "list");
+        CreatedTrelloCardDto createdTrelloCardDto = new CreatedTrelloCardDto("1", "name", "url");
+
+        when(trelloMapper.mapToTrelloCard(trelloCardDto)).thenReturn(trelloCard);
+        when(trelloService.createTrelloCard(trelloMapper.mapToTrelloCardDto(trelloCard))).thenReturn(createdTrelloCardDto);
+
+        //When
+        CreatedTrelloCardDto createdCard = trelloFacade.createCard(trelloCardDto);
+
+        //Then
+        Assert.assertEquals(createdCard.getName(), "name");
     }
 }
