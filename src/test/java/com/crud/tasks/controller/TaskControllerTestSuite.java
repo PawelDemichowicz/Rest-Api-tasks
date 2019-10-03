@@ -16,10 +16,9 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -66,7 +65,7 @@ public class TaskControllerTestSuite {
         Task task = new Task(1L, "task", "content");
         TaskDto taskDto = new TaskDto(1L, "task", "content");
 
-        when(dbService.getTask(1L)).thenReturn(Optional.of(task));
+        when(dbService.getTask(1L)).thenReturn(task);
         when(taskMapper.mapToTaskDto(task)).thenReturn(taskDto);
 
         //When & Then
