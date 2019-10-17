@@ -20,7 +20,7 @@ public class MailCreatorService {
     @Qualifier("templateEngine")
     private TemplateEngine templateEngine;
 
-    public String buildTrelloCardEmail(String message){
+    public String createSimpleEmail(String message, String emailPath){
 
         List<String> functionality = new ArrayList<>();
         functionality.add("You can manage your tasks");
@@ -30,7 +30,8 @@ public class MailCreatorService {
         Context context = new Context();
         context.setVariable("message", message);
         context.setVariable("tasks_url", "https://paweldemichowicz.github.io/");
-        context.setVariable("button", "Visit website");
+        context.setVariable("button1", "Visit website");
+        context.setVariable("button2", "Click, for check your tasks");
         context.setVariable("admin_name", adminConfig.getAdminName());
         context.setVariable("company_name", adminConfig.getCompanyName());
         context.setVariable("company_contact", adminConfig.getCompanyContact());
@@ -39,6 +40,6 @@ public class MailCreatorService {
         context.setVariable("is_friend", false);
         context.setVariable("admin_config", adminConfig);
         context.setVariable("application_functionality", functionality);
-        return templateEngine.process("mail/created-trello-card-mail", context);
+        return templateEngine.process(emailPath, context);
     }
 }
