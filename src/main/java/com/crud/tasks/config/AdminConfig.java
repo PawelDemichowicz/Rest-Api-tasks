@@ -12,4 +12,13 @@ public class AdminConfig {
 
     @Value("${admin.name}")
     private String adminName;
+
+    @Value("${company.name}")
+    private String companyName;
+
+    @Value("${company.contact}")
+    private String companyContact;
+
+    @Value("${company.website}")
+    private String companyWebsite;
 }
