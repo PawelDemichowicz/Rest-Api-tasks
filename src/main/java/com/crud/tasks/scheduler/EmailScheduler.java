@@ -24,7 +24,7 @@ public class EmailScheduler {
     @Autowired
     private AdminConfig adminConfig;
 
-    @Scheduled(cron = "0 0 10 * * *")
+    @Scheduled(cron = "0 30 20 * * *")
     public void sendInformationEmail() {
         long size = taskRepository.count();
         String message = (size == 1) ? MESSAGE_TASK : MESSAGE_TASKS;
@@ -32,7 +32,8 @@ public class EmailScheduler {
                 adminConfig.getAdminMail(),
                 SUBJECT,
                 "Currently in database you got: " + size + message,
-                "")
+                ""),
+                "mail/quantity-tasks-mail"
         );
     }
 }
