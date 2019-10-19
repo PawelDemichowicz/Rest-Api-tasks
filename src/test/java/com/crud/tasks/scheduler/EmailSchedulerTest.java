@@ -43,7 +43,7 @@ public class EmailSchedulerTest {
         emailScheduler.sendInformationEmail();
 
         //Then
-        verify(simpleEmailService, times(1)).send(mailArgumentCaptor.capture(),"quantity-tasks-mail");
+        verify(simpleEmailService, times(1)).send(mailArgumentCaptor.capture(),eq("mail/quantity-tasks-mail"));
         Mail mail = mailArgumentCaptor.getValue();
         Assert.assertEquals(mail.getMailTo(),"AdminMockMail");
         Assert.assertEquals(mail.getSubject(),"Tasks: Once a day email");
